@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IPTV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://cdn.fluidplayer.com/3.0.0/fluidplayer.min.js"></script>
+</head>
+<body>
+  <div id="main-page">
+	  <video id="hls-video" controls="controls" autoplay="autoplay" crossorigin="crossorigin">
+      <source src="https://nbn.chowdhury-shaheb.com/live/nb-starjalsha_720p/chunks.m3u8" type="application/x-mpegURL" />
+    </video>
+  </div>
+  <script>
+  fluidPlayer(
+    'hls-video', {
+      layoutControls: {
+            fillToContainer: true,
+            autoplay: true
+      }
+    }
+  );
+
+  window.onresize = function () {
+    windowSize();
+  }
+
+  document.onreadystatechange = function () {
+    windowSize();
+  }
+
+  async function windowSize() {
+    var videodisplay = document.getElementById("hls-video");
+    videodisplay.style.height = (document.documentElement.clientHeight - 10) + 'px';
+    videodisplay.style.width = (document.documentElement.clientWidth - 10) + 'px';
+    videodisplay.style.overflow = scroll;
+  }
+  </script>
+  <script src="index.js" type="module"></script>
+</body>
+</html>
